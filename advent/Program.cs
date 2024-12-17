@@ -6,7 +6,8 @@ string[] dataFromFile = File.ReadAllLines(filePath);
 List<int> leftValues = new List<int>();
 List<int> rightValues = new List<int>();
 
-int totalDistance = 0;
+int numTimesSeen = 0;
+int totalSimilarity = 0;
 
 foreach (string line in dataFromFile)
 {
@@ -22,12 +23,19 @@ foreach (string line in dataFromFile)
     
 }
 
-leftValues.Sort();
-rightValues.Sort();
-
-for (int i = 0; i < leftValues.Count; i++)
+for  (int i = 0; i < leftValues.Count; i++)
 {
-    totalDistance += Math.Abs(leftValues[i] - rightValues[i]);
+    numTimesSeen = 0;
+    for (int j = 0; j < rightValues.Count; j++)
+    {
+        
+        if (leftValues[i] == rightValues[j])
+        {
+            numTimesSeen++;
+        }
+        
+    }
+    totalSimilarity = totalSimilarity + (leftValues[i] * numTimesSeen);
 }
 
-Console.WriteLine(totalDistance);
+Console.WriteLine(totalSimilarity);
