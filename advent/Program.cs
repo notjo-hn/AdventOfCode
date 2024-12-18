@@ -12,13 +12,19 @@ List<string> list = [.. dataFromFile];
 int SafeTotal = 0;
 
 
-for (int i = 0; i < list.Count; i++)
-{
 
+void CheckRow(int i)
+{
     if (SingleDirectionChecker(i) && DifferenceChecker(i))
     {
         SafeTotal++;
     }
+}
+
+for (int i = 0; i < list.Count; i++)
+{
+    CheckRow(i);
+    
 }
 
 
